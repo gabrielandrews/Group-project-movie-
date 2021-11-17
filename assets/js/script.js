@@ -66,21 +66,70 @@ function getPosterApi() {
 
             .then(function (data) {
             // Use the console to examine the response
-            console.log(data);
+            // console.log(data);
 
             // save the first poster in each movie's array to a variable
             var moviePoster1 = data.posters[0].link;
-            var moviePoster2 = data.posters[1].link;
-            var moviePoster3 = data.posters[2].link;
-            var moviePoster4 = data.posters[3].link;
-
-            // set the background of each button to the movie poster for the respective film
+            
+            // set the background of the first button to the movie poster for the first film
             $('#option1').css("background-image", "url(" + moviePoster1 + ")");
+            
+            })
+
+        // fetch new data about movie 2 and get poster image
+        fetch(moviePoster2Url)
+            .then(function (response) {
+            return response.json();
+        })
+
+            .then(function (data) {
+            // Use the console to examine the response
+            // console.log(data);
+
+            // save the first poster in the movie's array to a variable
+            var moviePoster2 = data.posters[0].link;
+     
+            // set the background of the second button to the movie poster for the second film
             $('#option2').css("background-image", "url(" + moviePoster2 + ")");
+            
+            })
+
+        // fetch new data about movie 3 and get poster image
+        fetch(moviePoster3Url)
+            .then(function (response) {
+            return response.json();
+        })
+
+            .then(function (data) {
+            // Use the console to examine the response
+            // console.log(data);
+
+            // save the first poster in the movie's array to a variable
+            var moviePoster3 = data.posters[0].link;
+
+            // set the background of the third button to the movie poster for the third film
             $('#option3').css("background-image", "url(" + moviePoster3 + ")");
+
+            })
+
+        // fetch new data about movie 4 and get poster image
+        fetch(moviePoster4Url)
+            .then(function (response) {
+            return response.json();
+        })
+
+            .then(function (data) {
+            // Use the console to examine the response
+            // console.log(data);
+
+            // save the first poster in the movie's array to a variable
+            var moviePoster4 = data.posters[0].link;
+
+            // set the background of the fourth button to the movie poster for the fourth film
             $('#option4').css("background-image", "url(" + moviePoster4 + ")");
 
             })
+
         })
 
 };

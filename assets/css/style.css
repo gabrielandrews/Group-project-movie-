@@ -1,0 +1,18 @@
+#movie-selections {
+
+    width: 100%;
+
+}
+
+.movie-buttons {
+
+    display: flex;
+    flex-wrap: wrap;
+    height: 500px;
+    width: 500px%;
+    background-size: cover;
+    margin: 20px;
+    padding: 5px;
+
+}
+
