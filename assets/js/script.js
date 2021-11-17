@@ -1,0 +1,46 @@
+// function that selects a random index using an arrays length
+var randomize = function(max) {
+
+    var value = Math.floor(Math.random() * max);
+  
+    return value;
+  
+  };
+
+function getPosterApi() {
+
+    // use the imdb BoxOfficeAllTime Api to get a title 
+    var requestUrl = "https://imdb-api.com/en/API/BoxOfficeAllTime/k_un7r1xw2"
+
+    fetch(requestUrl)
+      .then(function (response) {
+        return response.json();
+      })
+
+      .then(function (data) {
+        // Use the console to examine the response
+        console.log(data);
+
+
+        // save a random number to one of four variables that will correspond to the index of the array api
+        var option1 = randomize (200);
+        var option2 = randomize (200);
+        var option3 = randomize (200);
+        var option4 = randomize (200);
+
+        // save the title of the movie (randomly chosen out of the 200 available in the api) to a variable
+        var movieTitle1 = data.items[option1].title;
+        var movieTitle2 = data.items[option2].title;
+        var movieTitle3 = data.items[option3].title;
+        var movieTitle4 = data.items[option4].title;
+
+      })
+
+};
+
+$("#random-button").click(function () {
+
+    getPosterApi();
+
+});
+
