@@ -1,3 +1,6 @@
+// kyles api key for imdb: k_un7r1xw2
+// lisa api key for imdb: k_652kwzuy
+
 // function that selects a random index using an arrays length
 var randomize = function(max) {
 
@@ -10,7 +13,7 @@ var randomize = function(max) {
 function getReleaseYearApi() {
 
     // use the IMDB BoxOfficeAllTime Api to get a title and poster 
-    var requestUrl = "https://imdb-api.com/en/API/BoxOfficeAllTime/k_un7r1xw2"
+    var requestUrl = "https://imdb-api.com/en/API/BoxOfficeAllTime/k_652kwzuy"
 
     fetch(requestUrl)
       .then(function (response) {
@@ -18,7 +21,7 @@ function getReleaseYearApi() {
       })
 
       .then(function (data) {
-        // console.log(data);
+        console.log(data);
 
         // save a random number to a variable that will correspond to the index of the array api
         var thisMovie = randomize (200);
@@ -39,7 +42,7 @@ function getReleaseYearApi() {
         $('#title').text(movieTitle);
 
         // create a new api url for the movie poster api (IMDB) 
-        var moviePosterUrl = "https://imdb-api.com/en/API/Posters/k_un7r1xw2/" + movieId;
+        var moviePosterUrl = "https://imdb-api.com/en/API/Posters/k_652kwzuy/" + movieId;
 
         // create a new api url for the movie release year api (OMDB)
         var truemovieYearUrl = "http://www.omdbapi.com/?i=" + movieId + "&apikey=83e56856";
