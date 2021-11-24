@@ -139,7 +139,7 @@ function getReleaseYearApi() {
             var moviePoster = data.posters[0].link;
 
             // set the background of the paragraph display to the movie poster
-            $('#title').css("background-image", "url(" + moviePoster + ")");
+            $('#title-image').css("background-image", "url(" + moviePoster + ")");
 
         })
 
