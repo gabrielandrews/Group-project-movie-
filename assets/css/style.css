@@ -11,6 +11,12 @@ body {
   width: 50%;
   }
 
+#movie-quote p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .poster-image {
   border: 2px solid #ddd;
   border-radius: 4px;
@@ -21,9 +27,7 @@ body {
   position: center;
   align-items: center;
   background-size: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;}
+  }
 
 .container {
   display: flex;
