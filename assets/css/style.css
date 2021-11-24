@@ -19,3 +19,10 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.movie-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
