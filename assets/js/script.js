@@ -50,12 +50,12 @@ function getReleaseYearApi() {
         var moviePosterUrl = "https://imdb-api.com/en/API/Posters/" + apikey+ "/" + movieId;
 
         // create a new api url for the movie release year api (OMDB)
-        var truemovieYearUrl = "http://www.omdbapi.com/?i=" + movieId + "&apikey=83e56856";
+        var truemovieYearUrl = "https://www.omdbapi.com/?i=" + movieId + "&apikey=83e56856";
 
         // create 3 new api url's for the incorrect movie release year options (OMDB)
-        var falseChoiceUrl1 = "http://www.omdbapi.com/?i=" + randomMovieId1 + "&apikey=83e56856";
-        var falseChoiceUrl2 = "http://www.omdbapi.com/?i=" + randomMovieId2 + "&apikey=83e56856";
-        var falseChoiceUrl3 = "http://www.omdbapi.com/?i=" + randomMovieId3 + "&apikey=83e56856";
+        var falseChoiceUrl1 = "https://www.omdbapi.com/?i=" + randomMovieId1 + "&apikey=83e56856";
+        var falseChoiceUrl2 = "https://www.omdbapi.com/?i=" + randomMovieId2 + "&apikey=83e56856";
+        var falseChoiceUrl3 = "https://www.omdbapi.com/?i=" + randomMovieId3 + "&apikey=83e56856";
 
         // fetch new data about movie and get year of release from omdb api
         fetch(truemovieYearUrl)
