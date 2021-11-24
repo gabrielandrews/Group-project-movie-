@@ -7,6 +7,9 @@ body {
 }
 
 #movie-quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: auto;
   width: 50%;
   }
@@ -23,10 +26,9 @@ body {
   padding: 5px;
   width: 300px;
   height: 300px;
-  display: flex;
-  align-items: center;
   background-size: 300px;
-  justify-content: center;  }
+  align-self: center;
+}
 
 .poster-title {
   padding: 5px;
