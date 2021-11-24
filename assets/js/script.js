@@ -299,7 +299,7 @@ $("#random-button").click(function () {
 });
 
 // add listener for for movie buttons
-$(".movie-button").on("click", processAnswer);
+$(".movie-buttons").on("click", processAnswer);
 
 // set up event listener for saving stats
 var formEl = document.querySelector("#stats-form");
