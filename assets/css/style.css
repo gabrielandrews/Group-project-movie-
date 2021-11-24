@@ -28,6 +28,12 @@ body {
   background-size: 300px;
   }
 
+.poster-title {
+  padding: 5px;
+  position: center;
+  align-items: center;
+}
+
 .container {
   display: flex;
   flex-direction: row;
