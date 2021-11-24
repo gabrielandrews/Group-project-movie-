@@ -12,6 +12,9 @@ body {
   padding: 5px;
   width: 400px;
   height: 525px;
+  overflow: scroll;
+  position: center;
+  align-items: center;
 }
 
 .container {
