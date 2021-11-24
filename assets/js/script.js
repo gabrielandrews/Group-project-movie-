@@ -16,7 +16,7 @@ function getReleaseYearApi() {
     document.getElementById("correct-or-incorrect").textContent = "";
 
     // use the IMDB BoxOfficeAllTime Api to get a title and poster 
-    var requestUrl = "https://imdb-api.com/en/API/BoxOfficeAllTime/k_652kwzuy"
+    var requestUrl = "https://imdb-api.com/en/API/BoxOfficeAllTime/" + apikey;
 
     fetch(requestUrl)
       .then(function (response) {
@@ -45,7 +45,7 @@ function getReleaseYearApi() {
         $('#title').text(movieTitle);
 
         // create a new api url for the movie poster api (IMDB) 
-        var moviePosterUrl = "https://imdb-api.com/en/API/Posters/k_652kwzuy/" + movieId;
+        var moviePosterUrl = "https://imdb-api.com/en/API/Posters/" + apikey+ "/" + movieId;
 
         // create a new api url for the movie release year api (OMDB)
         var truemovieYearUrl = "http://www.omdbapi.com/?i=" + movieId + "&apikey=83e56856";
@@ -188,21 +188,29 @@ getStats = function() {
     return movieStats;
 };
 
+// collect user initials and save stats to local storage
 saveStats = function(event) {
     event.preventDefault();
 
     // retrieve currently saved stats, if any
     var savedStats = getStats();
-    // if (!savedStats) {
-    //     savedStats = [];
-    // }
 
     // get current stats
     var inputEl = document.querySelector("input[name='initials']");
     // now find textarea associated with this parent
     var initials = inputEl.value;
-    //newStat = textareaEl.value.trim();
-
+    // get expertise - if any
+    // retrieve text context from expertise <p>
+    // will like like this example: "Genre expertise: None"
+    genreExpertise = "None";
+    var tmpExpertise = document.getElementById("expertise").textContent
+    if (tmpExpertise) {
+        tmpList = tmpExpertise.split(":");
+        if (tmpList.length > 1) {
+            genreExpertise = tmpList[1].trim();
+        }
+    }
+    
     if (initials) {
         // add this task to the arrray and save
         statsObj = {
@@ -217,17 +225,34 @@ saveStats = function(event) {
         // save modified tasklist to local storage
         localStorage.setItem("movie-stats", JSON.stringify(savedStats));
     }
+    displayPrevioudStats();
 };
 
+// display any saved stats in local storage to Saved Stats
+// portion of the webpage
 displayPrevioudStats = function() {
+
+    // get ol element
+    olEl = document.querySelector("#saved-stats");
+    // remove any existing children
+    while (olEl.hasChildNodes()) {
+        olEl.removeChild(olEl.firstChild);
+    }
+
+    // retrieve stats from local storage
     statsList = getStats();
+
     for(var i=0; i<statsList.length; i++) {
         // create list items
         liEl = document.createElement("li");
-        liEl.textContent = statsList[i].initials;
+        liEl.textContent = statsList[i].initials +  ":  " +
+                            statsList[i].correct + " of " + statsList[i].answered + " correct,  " +
+                            "genre expertise: " + statsList[i].genreExpertise;
+        olEl.appendChild(liEl);
     }
 }
 
+// retrieve answer from option1 element and see if it is correct or not
 function processAnswer(event) {
     // retrieve button clicked
     var selectedYear = event.currentTarget.textContent;
@@ -261,7 +286,10 @@ var totalQuestions = 0;
 var correctAnswers = 0;
 var movieGenre = "";
 var correctGenres = [];
+var apikey = "k_un7r1xw2";
 
+// display any stats stored in local storage
+displayPrevioudStats();
 
 $("#random-button").click(function () {
 
