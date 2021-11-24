@@ -25,4 +25,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  text-color: white;
+  margin: 5px;
+  padding: 3px;
 }
