@@ -12,6 +12,9 @@ var randomize = function(max) {
 
 function getReleaseYearApi() {
 
+    // clear the response message content
+    document.getElementById("correct-or-incorrect").textContent = "";
+
     // use the IMDB BoxOfficeAllTime Api to get a title and poster 
     var requestUrl = "https://imdb-api.com/en/API/BoxOfficeAllTime/k_652kwzuy"
 
@@ -61,6 +64,10 @@ function getReleaseYearApi() {
             .then(function (data) {
             // Use the console to examine the response
             // console.log(data);
+
+            // save the genre for this correct movie
+            var genreList = data.Genre.split(",");
+            movieGenre = genreList[0];
 
             // save the correct release year in the movie's array to a variable
             var movieReleaseYear1 = data.Released;
@@ -139,9 +146,132 @@ function getReleaseYearApi() {
 
 };
 
+// find duplicate genres in genreList
+// just pick first duplicate
+getGenreExpertise = function() {
+    var uniq = correctGenres
+        .map((genre) => {
+            return {
+                count: 1,
+                genre: genre
+            }
+        })
+        .reduce((a,b) => {
+            a[b.genre] = (a[b.genre] || 0) + b.count
+            return a
+        }, {});
+    var duplicates = Object.keys(uniq).filter((a) => uniq[a] > 1);
+
+    return duplicates;
+}
+
+// keep track of total questions and count of correct ones
+// and correct genres
+resetStatValues = function() {
+    totalQuestions = 0;
+    correctAnswers = 0;
+    movieGenre = "";
+    genreExpertise = "";
+    correctGenres = [];
+};
+
+// get stats from local storage 
+getStats = function() {
+
+    var movieStats = localStorage.getItem("movie-stats");
+    if (movieStats === null) {
+        movieStats = [];
+    } else {
+        movieStats = JSON.parse(movieStats);
+    }
+
+    return movieStats;
+};
+
+saveStats = function(event) {
+    event.preventDefault();
+
+    // retrieve currently saved stats, if any
+    var savedStats = getStats();
+    // if (!savedStats) {
+    //     savedStats = [];
+    // }
+
+    // get current stats
+    var inputEl = document.querySelector("input[name='initials']");
+    // now find textarea associated with this parent
+    var initials = inputEl.value;
+    //newStat = textareaEl.value.trim();
+
+    if (initials) {
+        // add this task to the arrray and save
+        statsObj = {
+            initials: initials,
+            answered: totalQuestions,
+            correct: correctAnswers,
+            genreExpertise: genreExpertise
+        };
+
+        savedStats.push(statsObj);
+
+        // save modified tasklist to local storage
+        localStorage.setItem("movie-stats", JSON.stringify(savedStats));
+    }
+};
+
+displayPrevioudStats = function() {
+    statsList = getStats();
+    for(var i=0; i<statsList.length; i++) {
+        // create list items
+        liEl = document.createElement("li");
+        liEl.textContent = statsList[i].initials;
+    }
+}
+
+function processAnswer(event) {
+    // retrieve button clicked
+    var selectedYear = event.currentTarget.textContent;
+
+    // retrieve correct year
+    var correctYear = document.getElementById("option1").textContent;
+
+    // find out if this button is the correct answer
+    var message = "Incorrect"
+    if (selectedYear === correctYear) {
+        message = "Correct";
+        correctAnswers++;
+        correctGenres.push(movieGenre);
+    }
+    document.getElementById("correct-or-incorrect").textContent = message;
+    totalQuestions++;
+
+    // calculate genre expertise
+    var genre = getGenreExpertise();
+
+    // now write out stats
+    document.getElementById("current-stats").textContent = correctAnswers + " out of " + totalQuestions + " correct";
+    genreText = "None";
+    if (genre.length) {
+        genreText = genre;
+    }
+    document.getElementById("expertise").textContent = "Genre expertise: " + genreText;
+}
+
+var totalQuestions = 0;
+var correctAnswers = 0;
+var movieGenre = "";
+var correctGenres = [];
+
+
 $("#random-button").click(function () {
 
     getReleaseYearApi();
 
 });
 
+// add listener for for movie buttons
+$(".movie-options").on("click", processAnswer);
+
+// set up event listener for saving stats
+var formEl = document.querySelector("#stats-form");
+formEl.addEventListener("submit", saveStats);
