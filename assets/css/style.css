@@ -10,7 +10,8 @@ body {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
-  object-fit: contain;
+  width: 400px;
+  height: 525px;
 }
 
 .container {
@@ -25,6 +26,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-size: cover;
 }
 
 .movie-buttons-container {
