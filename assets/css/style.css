@@ -70,3 +70,9 @@ body {
   padding: 3px;
   border: solid 2px black;
 }
+
+.correct-or-incorrect {
+  padding: 5px;
+  position: center;
+  align-items: center;
+}
