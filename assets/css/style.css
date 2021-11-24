@@ -6,6 +6,12 @@ body {
   font-family: "Bebas Neue";
 }
 
+.poster-image {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 400px;}
+
 .container {
   display: flex;
   flex-direction: row;
