@@ -1,5 +1,6 @@
 // kyles api key for imdb: k_un7r1xw2
 // lisa api key for imdb: k_652kwzuy
+// alvin api key for imdb: k_63os7wtz
 
 // function that selects a random index using an arrays length
 var randomize = function(max) {
