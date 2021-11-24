@@ -72,7 +72,8 @@ body {
 }
 
 .correct-or-incorrect {
+  display: flex;
   padding: 5px;
   position: center;
-  align-items: center;
+  justify-content: center;
 }
