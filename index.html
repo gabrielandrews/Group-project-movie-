@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Quote Match</title>
+    <title>Movie Date Match</title>
 
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Test Your Movie Timeline Knowledge</title>
@@ -29,9 +29,6 @@
 
 <body class="bg-gray-600">
     <!--- Random Button Section -->
-    <section id="random-button-section">
-        <button type="button" id="random-button">
-            Click here to generate a quote and test your movie knowledge!
     <div class=container>
         <button type="button" class="bg-red-500 text-white font-bold py-2 px-4 rounded" id="random-button">
             Click here to generate a movie and test your knowledge!
@@ -47,10 +44,6 @@
     </div>
 
     <!-- Movie Posters/Options Section -->
-    <section id="movie-selections">
-
-        <h2>
-            What movie is this quote from?
     <div id="movie-selections">
         <h2 class="text-center text-white text-3xl py-2 px-4">
             What year was this film released?
@@ -75,18 +68,30 @@
             <button class="movie-options" id="option4"></button>
 
         </div>
+        <p id="correct-or-incorrect">
+        </p>
 
     </div>
 
     <!-- Saved Scores Section -->
     <div id="saved-scores">
+        <p id="current-stats">
+        </p>
+        <p id="expertise">
+        </p>
+        <form id="stats-form">
+            <div class="form-group">
+                <input name="initials" type="text" placeholder="Enter Initials"/>
+            </div>
+            <div class="form-group">
+                <button id="save-stats" type="submit">Save Stats</button>
+            </div>
+        </form>
         <h2 class="text-center text-white text-3xl py-2 px-4">
             Saved Scores
         </h2>
-
-    </section>
-
-
+        <ol id="saved-stats">
+        </ol>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
