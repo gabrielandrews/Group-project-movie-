@@ -9,9 +9,7 @@ body {
 #movie-quote {
   margin: auto;
   width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;}
+  }
 
 .poster-image {
   border: 2px solid #ddd;
@@ -23,7 +21,9 @@ body {
   position: center;
   align-items: center;
   background-size: 300px;
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;}
 
 .container {
   display: flex;
