@@ -6,6 +6,11 @@ body {
   font-family: "Bebas Neue";
 }
 
+#movie-quote {
+   margin: auto;
+  width: 50%;
+}
+
 .poster-image {
   border: 2px solid #ddd;
   border-radius: 4px;
