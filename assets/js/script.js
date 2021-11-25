@@ -2,7 +2,7 @@
 // lisa api key for imdb: k_652kwzuy
 // alvin api key for imdb: k_63os7wtz
 // gabriel api key for imdb: k_jur4q52p
-// lisa 2nd api key: k_12345678
+// lisa 2nd api key: k_rrhzg8o9
 
 // function that selects a random index using an arrays length
 var randomize = function(max) {
@@ -289,7 +289,7 @@ var totalQuestions = 0;
 var correctAnswers = 0;
 var movieGenre = "";
 var correctGenres = [];
-var apikey = "k_12345678";
+var apikey = "k_rrhzg8o9";
 
 // display any stats stored in local storage
 displayPrevioudStats();
